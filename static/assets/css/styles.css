@@ -1,0 +1,100 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #555;
+}
+
+/* Task List Styles */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.task-item.completed {
+    background: #e0f7fa;
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task-title {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.complete-btn {
+    background: #4caf50;
+    color: #fff;
+}
+
+.complete-btn:hover {
+    background: #45a049;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background: #e53935;
+}
+
+.add-task-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #2196f3;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.add-task-btn:hover {
+    background: #1e88e5;
+}

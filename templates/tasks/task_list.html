@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'tasks/css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <ul class="task-list">
+            {% for task in tasks %}
+                <li class="task-item {% if task.completed %}completed{% endif %}">
+                    <span class="task-title">{{ task.title }}</span>
+                    <div class="task-actions">
+                        {% if not task.completed %}
+                            <a href="{% url 'complete_task' task.id %}" class="btn complete-btn">Complete</a>
+                        {% endif %}
+                        <a href="{% url 'delete_task' task.id %}" class="btn delete-btn">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_task' %}" class="btn add-task-btn">Add Task</a>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="{% static 'tasks/js/script.js' %}"></script>
+</body>
+</html>
