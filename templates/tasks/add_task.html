@@ -1,23 +1,37 @@
 <!--==========| ==> Load Static Here <== |==========-->
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Task</title>
+    <title>To-Do List</title>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+        
 </head>
 <body>
-    <div class="container">
-        <h1>Add Task</h1>
-        <form method="post" class="task-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn add-task-btn">Add Task</button>
-        </form>
-        <a href="{% url 'task_list' %}" class="btn add-task-btn">Back to List</a>
+    <div class="container__wrap">
+        <div class="container">
+            <h1>Add Task</h1>
+            <form method="post" class="task-form">
+                {% csrf_token %}
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 30px;">
+                    <label>Title</label>
+                    {{ form.title }}
+                </div>
+                <div class="button-content">
+                    <a href="{% url 'task_list' %}" class="btn add-task-btn">Back to List</a>
+                    <button type="submit" class="btn add-task-btn">Create Task</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+
+    <!-- Custom JavaScript -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
 </body>
 </html>
