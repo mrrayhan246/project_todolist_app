@@ -1,3 +1,4 @@
+from datetime import timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import TaskForm
@@ -18,11 +19,14 @@ def add_task(request):
 
 def complete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
-    task.completed = True
-    task.save()
+    task.mark_completed()  # Use the method from the model
     return redirect('task_list')
 
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     task.delete()
     return redirect('task_list')
+
+def overdue_tasks(request):
+    tasks = Task.objects.filter(due_date__lt=timezone.now(), completed=False)
+    return render(request, 'tasks/overdue_tasks.html', {'tasks': tasks})
