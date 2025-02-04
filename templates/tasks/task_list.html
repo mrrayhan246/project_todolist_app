@@ -1,7 +1,6 @@
 <!--==========| ==> Load Static Here <== |==========-->
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +19,9 @@
                 {% for task in tasks %}
                     <li class="task-item {% if task.completed %}completed{% endif %}">
                         <span class="task-title">{{ task.title }}</span>
+                        <span class="task-description">{{ task.description }}</span>
+                        <span class="task-due-date">Due: {{ task.due_date }}</span>
+                        <span class="task-priority">Priority: {{ task.get_priority_display }}</span>
                         <div class="task-actions">
                             {% if not task.completed %}
                                 <a href="{% url 'complete_task' task.id %}" class="btn complete-btn">Complete</a>
@@ -34,7 +36,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Custom JavaScript -->
     <script src="{% static 'assets/js/script.js' %}"></script>
