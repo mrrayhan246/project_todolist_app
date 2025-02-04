@@ -7,22 +7,22 @@ class TaskForm(forms.ModelForm):
         fields = ['title', 'description', 'due_date', 'priority', 'completed']
         widgets = {
             'title': forms.TextInput(attrs={
-                'class': 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500',
+                'class': 'mt-1 px-3 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500',
                 'placeholder': 'Enter task title'
             }),
             'description': forms.Textarea(attrs={
-                'class': 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500',
+                'class': 'mt-1 px-3 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500',
                 'placeholder': 'Enter task description',
                 'rows': 4
             }),
             'due_date': forms.DateTimeInput(attrs={
-                'class': 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500',
+                'class': 'mt-1 px-3 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500',
                 'type': 'datetime-local'
             }),
             'priority': forms.RadioSelect(attrs={
-                'class': 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500'
+                'class': 'mt-1 px-3 py-2 flex gap-10 w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500'
             }),
             'completed': forms.CheckboxInput(attrs={
-                'class': 'mt-1 block border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500'
+                'class': 'mt-1 px-3 py-2 block border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500'
             })
         }
