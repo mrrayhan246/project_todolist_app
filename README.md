@@ -68,6 +68,6 @@ If you would like to contribute to this project, please follow these steps:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-Your Name - [mrrayhan246@gmail.com](mailto:mrrayhan246@gmail.com)
+Md. Raihanul Islam (Rayhan) - [mrrayhan246@gmail.com](mailto:mrrayhan246@gmail.com)
 
 Project Link: [https://github.com/mrrayhan246/project_todolist_app](https://github.com/mrrayhan246/project_todolist_app)
