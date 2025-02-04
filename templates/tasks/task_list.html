@@ -7,37 +7,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+
+    <!-- Custom CSS (if needed) -->
+    <!-- <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}"> -->
         
 </head>
-<body>
-    <div class="container__wrap">
-        <div class="container">
-            <h1>To-Do List</h1>
-            <ul class="task-list">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-4">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold mb-4 text-center">To-Do List</h1>
+            <ul class="task-list space-y-4">
                 {% for task in tasks %}
-                    <li class="task-item {% if task.completed %}completed{% endif %}">
-                        <span class="task-title">{{ task.title }}</span>
-                        <span class="task-description">{{ task.description }}</span>
-                        <span class="task-due-date">Due: {{ task.due_date }}</span>
-                        <span class="task-priority">Priority: {{ task.get_priority_display }}</span>
-                        <div class="task-actions">
-                            {% if not task.completed %}
-                                <a href="{% url 'complete_task' task.id %}" class="btn complete-btn">Complete</a>
-                            {% endif %}
-                            <a href="{% url 'delete_task' task.id %}" class="btn delete-btn">Delete</a>
+                    <li class="task-item p-4 bg-gray-50 rounded-md shadow-sm border border-gray-200 {% if task.completed %}bg-green-50{% endif %}">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="task-title block text-lg font-semibold">{{ task.title }}</span>
+                                <span class="task-description block text-gray-600">{{ task.description }}</span>
+                                <span class="task-due-date block text-gray-500">Due: {{ task.due_date }}</span>
+                                <span class="task-priority block text-gray-500">Priority: {{ task.get_priority_display }}</span>
+                            </div>
+                            <div class="task-actions space-x-2">
+                                {% if not task.completed %}
+                                    <a href="{% url 'complete_task' task.id %}" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">Complete</a>
+                                {% endif %}
+                                <a href="{% url 'delete_task' task.id %}" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</a>
+                            </div>
                         </div>
                     </li>
                 {% endfor %}
             </ul>
-            <div class="button-content">
-                <a href="{% url 'add_task' %}" class="btn add-task-btn">Add Task</a>
+            <div class="mt-6 flex justify-center">
+                <a href="{% url 'add_task' %}" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Task</a>
             </div>
         </div>
     </div>
 
     <!-- Custom JavaScript -->
-    <script src="{% static 'assets/js/script.js' %}"></script>
+    <!-- <script src="{% static 'assets/js/script.js' %}"></script> -->
 </body>
 </html>
