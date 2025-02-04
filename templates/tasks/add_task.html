@@ -1,7 +1,6 @@
 <!--==========| ==> Load Static Here <== |==========-->
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +21,18 @@
                     <label>Title</label>
                     {{ form.title }}
                 </div>
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 30px;">
+                    <label>Description</label>
+                    {{ form.description }}
+                </div>
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 30px;">
+                    <label>Due Date</label>
+                    {{ form.due_date }}
+                </div>
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 30px;">
+                    <label>Priority</label>
+                    {{ form.priority }}
+                </div>
                 <div class="button-content">
                     <a href="{% url 'task_list' %}" class="btn add-task-btn">Back to List</a>
                     <button type="submit" class="btn add-task-btn">Create Task</button>
@@ -29,7 +40,6 @@
             </form>
         </div>
     </div>
-
 
     <!-- Custom JavaScript -->
     <script src="{% static 'assets/js/script.js' %}"></script>
