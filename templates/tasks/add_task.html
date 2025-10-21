@@ -4,47 +4,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <!-- Tailwind CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Task</title>
 
-    <!-- Custom CSS (if needed) -->
-    <!-- <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}"> -->
-        
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c7d2fe, #fef9c3);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.7s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    input, textarea, select {
+      @apply w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition duration-300;
+    }
+
+    label {
+      @apply text-gray-700 font-semibold mb-2 block;
+    }
+
+    .glow {
+      box-shadow: 0 0 15px rgba(99,102,241,0.4);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="container mx-auto p-4">
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h1 class="text-2xl font-bold mb-4">Add Task</h1>
-            <form method="post" class="task-form">
-                {% csrf_token %}
-                <div class="mb-4">
-                    <label class="block text-gray-700">Title</label>
-                    {{ form.title }}
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Description</label>
-                    {{ form.description }}
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Due Date</label>
-                    {{ form.due_date }}
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Priority</label>
-                    {{ form.priority }}
-                </div>
-                <div class="flex justify-between items-center">
-                    <a href="{% url 'task_list' %}" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to List</a>
-                    <button type="submit" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create Task</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <!-- Custom JavaScript -->
-    <!-- <script src="{% static 'assets/js/script.js' %}"></script> -->
+<body class="min-h-screen flex items-center justify-center px-4">
+  <div class="max-w-5xl w-full bg-white/80 backdrop-blur-lg rounded shadow-2xl p-8 fade-in border border-gray-100">
+    <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">
+      📝 Add a New Task
+    </h1>
+
+    <form method="post" class="space-y-5">
+      {% csrf_token %}
+      
+      <div>
+        <label>Title</label>
+        {{ form.title }}
+      </div>
+
+      <div>
+        <label>Description</label>
+        {{ form.description }}
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label>Due Date</label>
+          {{ form.due_date }}
+        </div>
+        <div>
+          <label>Priority</label>
+          {{ form.priority }}
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center pt-4">
+        <a href="{% url 'task_list' %}"
+           class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2 px-5 rounded shadow-md transform hover:scale-105 transition-all duration-300">
+          ⬅ Back
+        </a>
+
+        <button type="submit"
+          class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-2 px-6 rounded shadow-md transform hover:scale-105 transition-all duration-300 glow">
+          ✅ Create Task
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Simple Floating Animation -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const fields = document.querySelectorAll("input, textarea, select");
+      fields.forEach((field, i) => {
+        field.classList.add("fade-in");
+        field.style.animationDelay = `${i * 0.1}s`;
+      });
+
+      // Button click animation
+      const buttons = document.querySelectorAll("button, a");
+      buttons.forEach(btn => {
+        btn.addEventListener("mousedown", () => {
+          btn.classList.add("scale-95");
+        });
+        btn.addEventListener("mouseup", () => {
+          setTimeout(() => btn.classList.remove("scale-95"), 150);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
