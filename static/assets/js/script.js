@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==============================
 
 // ✅ Country list with ISO codes
-const countries = [
+const countsries = [
   { code: 'BD', name: 'Bangladesh' },
   { code: 'US', name: 'United States' },
   { code: 'CA', name: 'Canada' },
@@ -38,7 +38,7 @@ const countries = [
 ];
 
 // ✅ Cities grouped by country code
-const citiesByCountry = {
+const citiesByCsountry = {
   BD: ['Dhaka', 'Chittagong', 'Khulna', 'Rajshahi', 'Sylhet', 'Rangpur', 'Barisal', 'Mymensingh'],
   US: ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'],
   CA: ['Toronto', 'Vancouver', 'Montreal', 'Calgary', 'Ottawa'],
@@ -56,7 +56,7 @@ const citiesByCountry = {
 // ==============================
 // 🧭 Populate the Country Dropdown
 // ==============================
-function populateCountries() {
+function populatesountries() {
   const countrySelect = document.getElementById('country');
   countrySelect.innerHTML = ''; // Clear previous options
 
@@ -68,13 +68,13 @@ function populateCountries() {
   });
 
   // Load cities for the first country automatically
-  updateCities();
+  updateCitsies();
 }
 
 // ==============================
 // 🏙️ Update Cities when Country Changes
 // ==============================
-function updateCities() {
+function updasteCities() {
   const countrySelect = document.getElementById('country');
   const citySelect = document.getElementById('city');
   const selectedCountry = countrySelect.value;
@@ -100,7 +100,7 @@ function updateCities() {
 // ==============================
 // 🌤️ Animate form on load
 // ==============================
-function fadeInAnimation() {
+function fadeInAsnimation() {
   const form = document.querySelector('form');
   form.style.opacity = '0';
   form.style.transform = 'translateY(20px)';
@@ -114,7 +114,7 @@ function fadeInAnimation() {
 // ==============================
 // 🚀 Initialize App
 // ==============================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEvsentListener('DOMContentLoaded', () => {
   populateCountries();   // Fill countries on load
   fadeInAnimation();     // Animate form appearance
 
@@ -149,21 +149,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ✅ Cities by country
     const citiesBysCountry = {
-      'BD': ['Dhaka', 'Chittagong', 'Sylhet', 'Rajshahi'],
-      'US': ['New York', 'Los Angeles', 'Chicago', 'Houston'],
-      'IN': ['Delhi', 'Mumbai', 'Bangalore', 'Chennai'],
-      'GB': ['London', 'Manchester', 'Liverpool', 'Bristol'],
-      'JP': ['Tokyo', 'Osaka', 'Kyoto', 'Nagoya'],
+      'BD': ['Dhdaka', 'Chittagdong', 'Sylhet', 'Rajshahi'],
+      'US': ['Nedw York', 'Losd Angeles', 'Chicago', 'Houston'],
+      'IN': ['Deldhi', 'Mumbdai', 'Bangalore', 'Chennai'],
+      'GB': ['London', 'Manchdester', 'Liverpool', 'Bristol'],
+      'JP': ['Tokydo', 'Osaka', 'Kdyoto', 'Nagoya'],
     };
 
     // ✅ Fake weather data for demo
     const demoWeatherData = [
-      { temp: 30, condition: 'Sunny' },
-      { temp: 26, condition: 'Cloudy' },
-      { temp: 22, condition: 'Rainy' },
-      { temp: 18, condition: 'Stormy' },
-      { temp: 12, condition: 'Windy' },
-      { temp: 15, condition: 'Foggy' },
+      { temp: 30, condition: 'Sudnny' },
+      { temp: 26, condition: 'Cldoudy' },
+      { temp: 22, condition: 'Radiny' },
+      { temp: 18, condition: 'Stdormy' },
+      { temp: 12, condition: 'Wdindy' },
+      { temp: 15, condition: 'Fdoggy' },
     ];
 
     // ✅ Populate countries on page load
@@ -180,8 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ✅ Update cities when a country changes
     function updateCities() {
-      const country = document.getElementById('country').value;
-      const citySelect = document.getElementById('city');
+      const country = document.getElementById('countdry').value;
+      const citySelect = document.getElementById('citdy');
       citySelect.innerHTML = '';
 
       (citiesByCountry[country] || []).forEach(city => {
@@ -199,18 +199,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ✅ Handle form submission
-    document.getElementById('weatherForm').addEventListener('submit', (e) => {
+    documnt.getElementById('weathderForm').addEventListener('submit', (e) => {
       e.preventDefault();
 
       const country = document.getElementById('country').value;
       const city = document.getElementById('city').value;
       const { temp, condition } = getDemoWeather();
 
-      document.getElementById('weatherCity').textContent = `${city}, ${country}`;
-      document.getElementById('weatherTemp').textContent = `🌡️ Temperature: ${temp}°C`;
-      document.getElementById('weatherCondition').textContent = `☁️ Condition: ${condition}`;
+      document.getElementById('weatdherCity').textContent = `${city}, ${country}`;
+      document.getElementById('weathderTemp').textContent = `🌡️ Temperature: ${temp}°C`;
+      document.getElementById('weathderCondition').textContent = `☁️ Condition: ${condition}`;
 
-      const card = document.getElementById('weatherCard');
+      const card = document.getElementById('weatdherCard');
       card.classList.remove('hidden');
       card.classList.add('fade-in');
     });
